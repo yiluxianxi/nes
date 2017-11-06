@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+</head>
+<body>
+    <div class="wrap" ng-app="1510B">
+        <div class="header">
+            <span>北京市</span>
+            <img src="img/1.png" alt="">
+            <div>
+                <i class="icon iconfont">&#xf017e;</i>
+                <i class="icon iconfont">&#xf017e;</i>
+            </div>
+        </div>
+
+        <div class="main" ng-controller='myter'>
+            <div class="top">
+                    <li ng-repeat="arr in img1"><img src="{{arr}}" alt=""></li>
+                    <!-- <li><img src="img/3.png" alt=""></li>
+                    <li><img src="img/4.png" alt=""></li>
+                    <li><img src="img/5.png" alt=""></li> -->
+            </div>
+            <div class="content">
+                <div class="contop">
+                    <li ng-repeat="arr2 in img2"><img src="{{arr2}}" alt=""></li>
+                    <!-- <li><img src="img/7.png" alt=""></li>
+                    <li><img src="img/8.png" alt=""></li>
+                    <li><img src="img/9.png" alt=""></li> -->
+                </div>
+                <div class="cons">
+                    <li><img src="img/10.png" alt=""></li>
+                    <p><img src="img/11.png" alt=""></p>
+                    <li><img src="img/12.png" alt=""></li>
+                </div>
+                <div class="conbut">
+                     <li ng-repeat="arr3 in img3"><img src="{{arr3}}" alt=""></li>
+                    <!-- <li><img src="img/7.png" alt=""></li>
+                    <li><img src="img/8.png" alt=""></li>
+                    <li><img src="img/9.png" alt=""></li>  -->
+                </div>
+            </div>
+            <div class="banner">
+                <img src="img/13.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <dl>
+                <dt></dt>
+                <dd>ss</dd>
+            </dl>
+            <dl>
+                <dt></dt>
+                <dd>ss</dd>
+            </dl>
+            <dl>
+                <dt></dt>
+                <dd>ss</dd>
+            </dl>
+            <dl>
+                <dt></dt>
+                <dd>ss</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+<script src="angular.min.js"></script>
+<script>
+    var app = angular.module('1510B',[]);
+    app.controller('myter',function($scope,$http){
+           $http({
+                method:'get',
+                url:'http://localhost:8080/getdata'
+            }).then(function(resp){
+                console.log(resp.data.top);
+                console.log(resp.data.con);
+                console.log(resp.data.cons);
+                
+                 $scope.img1 = resp.data.top;
+                 $scope.img2 = resp.data.con;
+                 $scope.img3 = resp.data.cons;
+            },function(error){
+
+        })
+    })
+</script>
+</html>  
